@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatra Ride Service</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; }
+    header, footer { background: #FFCD00; color: #222; padding: 20px; text-align: center; }
+    nav a { margin: 0 15px; color: #222; font-weight: bold; text-decoration: none; }
+    .hero { background: #222; color: white; padding: 40px 20px; text-align: center; }
+    .btn-primary { background: #FFCD00; color: #222; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 30px; }
+    .booking-section { padding: 40px 20px; background: #f9f9f9; }
+    .booking-form { max-width: 500px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .booking-form h2 { margin-bottom: 20px; text-align: center; color: #222; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+    .form-group input { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    .form-group button { background: #25D366; color: white; padding: 10px 20px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; width: 100%; }
+    .form-group button:hover { background: #1ebe5c; }
+    footer { margin-top: 40px; font-size: 0.9rem; }
+  
+.navbar {
+  position: relative;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  color: #222;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    text-align: right;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #FFCD00;
+    padding: 10px 0;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Chatra Ride Service</h1>
+  
+<nav class="navbar">
+  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#booking">Book Ride</a>
+    <a href="#login">Login</a>
+    <a href="#signup">Sign Up</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About Us</a>
+    <a href="#partner">Partner with Us</a>
+    <a href="#vehicles">Vehicle List</a>
+  </div>
+</nav>
+
+    <a href="#booking">Book Ride</a>
+    <a href="#login">Login</a>
+    <a href="#signup">Sign Up</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Fast & Reliable Rides in Chatra</h2>
+  <p>Affordable and trusted rides with over 900+ riders.</p>
+  <a href="#booking" class="btn-primary">Book Your Ride</a>
+
+  <!-- Clear 3-Line Login/Signup Section -->
+  <div style="text-align:center; margin-top: 30px;">
+    <p style="font-size: 1.1em;">Welcome! Please login or sign up to continue.</p>
+    <a href="#login" style="display: inline-block; margin: 10px; padding: 10px 20px; background-color: #FFCD00; color: #222; font-weight: bold; border-radius: 25px; text-decoration: none;">Login</a>
+    <a href="#signup" style="display: inline-block; margin: 10px; padding: 10px 20px; background-color: #FFCD00; color: #222; font-weight: bold; border-radius: 25px; text-decoration: none;">Sign Up</a>
+  </div>
+
+</section>
+
+<section id="booking" class="booking-section">
+  <div class="booking-form">
+    <h2>Book Your Ride</h2>
+    <div class="form-group">
+      <label for="pickup">Pickup Location</label>
+      <input type="text" id="pickup" placeholder="Enter pickup location">
+    </div>
+    <div class="form-group">
+      <button onclick="getLocation()">Use Current Location</button>
+    </div>
+    <div class="form-group">
+      <label for="drop">Drop Location</label>
+      <input type="text" id="drop" placeholder="Enter drop location">
+    </div>
+    <div class="form-group">
+      <button onclick="bookRide()">Book Now on WhatsApp</button>
+    </div>
+  </div>
+
+<section id="login" class="booking-section">
+  <div class="booking-form">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Enter your password">
+    </div>
+    <div class="form-group">
+      <button onclick="loginUser()">Login</button>
+    </div>
+  </div>
+</section>
+
+<section id="signup" class="booking-section">
+  <div class="booking-form">
+    <h2>Sign Up</h2>
+    <div class="form-group">
+      <label for="signup-name">Full Name</label>
+      <input type="text" id="signup-name" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" placeholder="Create a password">
+    </div>
+    <div class="form-group">
+      <button onclick="signupUser()">Sign Up</button>
+    </div>
+  </div>
+</section>
+
+</section>
+
+
+<section id="about" class="booking-section">
+  <div class="booking-form">
+    <h2>About Us</h2>
+    <p>We are a leading ride-sharing service in Chatra, focused on safety and reliability.</p>
+  </div>
+</section>
+
+<section id="partner" class="booking-section">
+  <div class="booking-form">
+    <h2>Partner with Us</h2>
+    <p>Join our network and grow with Chatra Ride Service. Apply to become a driver partner today!</p>
+  </div>
+</section>
+
+<section id="vehicles" class="booking-section">
+  <div class="booking-form">
+    <h2>Vehicle List</h2>
+    <p>We offer bikes, autos, and cars for various ride needs across Chatra city.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact" style="text-align:center; padding: 40px; background: #222; color: #FFCD00;">
+  <h3>Contact Us</h3>
+  <p>Phone: +91 96313 57456</p>
+  <p>Email: support@chatrarideservice.com</p>
+</section>
+
+
+<section id="customer-experience" class="booking-section">
+  <div class="booking-form" style="text-align:center;">
+    <h2>Customer Experience</h2>
+    <img src="data:image/jpeg;base64,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" 
+         alt="Sudeep" style="width:150px; height:150px; border-radius: 50%; margin: 20px auto;">
+    <h3 style="margin: 10px 0;">Sudeep</h3>
+    <p>"Chatra Ride Service made my daily commute smooth and affordable. The booking process is super easy and the drivers are very polite. Highly recommended!"</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Chatra Ride Service. All rights reserved.
+</footer>
+
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      document.getElementById('pickup').value = `https://www.google.com/maps?q=${lat},${lon}`;
+    }, function(error) {
+      alert("Location access denied or unavailable.");
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function bookRide() {
+  const pickup = document.getElementById('pickup').value;
+  const drop = document.getElementById('drop').value;
+  const message = `Hi, I want to book a ride.
+Pickup: ${pickup}
+Drop: ${drop}`;
+  const url = "https://wa.me/919631357456?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+
+function loginUser() {
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+  alert(`Login attempt:\nEmail: ${email}\nPassword: ${'*'.repeat(password.length)}`);
+}
+
+function signupUser() {
+  const name = document.getElementById('signup-name').value;
+  const email = document.getElementById('signup-email').value;
+  const password = document.getElementById('signup-password').value;
+  alert(`Signup Details:\nName: ${name}\nEmail: ${email}\nPassword: ${'*'.repeat(password.length)}`);
+}
+
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  nav.classList.toggle('show');
+}
+
+</script>
+
+</body>
+</html>
